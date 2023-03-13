@@ -1,0 +1,358 @@
+html {
+    height: 100%;
+    background-color: #000;
+  }
+
+
+  /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #3f3f3f;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+  transition: all 0.5s ease-in-out;
+}  
+
+  body {
+    margin:0;
+    padding:0;
+    scroll-behavior: smooth;
+    height: 100%;
+  }
+
+  .main-head{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .landing-page{
+      height: 100%;
+      background-image: url("/img/Home.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      z-index: 0;
+
+  }
+
+  .landing-page::after{
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      mix-blend-mode: darken;
+      background: linear-gradient(to top,rgb(0, 0, 0) 0,rgba(0,0,0,1) 0%,rgba(0, 0, 0, 0.74) 100%);
+      opacity: 1;
+      z-index: 1;
+  }
+
+  .demo a {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    z-index: 2;
+    display: inline-block;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    color: #fff;
+    font : normal 400 20px/1 'Josefin Sans', sans-serif;
+    letter-spacing: .1em;
+    text-decoration: none;
+    transition: opacity .3s;
+  }
+  .demo a:hover {
+    color: #fff;
+    opacity: .5;
+    text-decoration: none;
+  }
+ 
+
+  .home{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 6% 10%;
+  }
+
+  .home h1{
+    font-family: 'Rubik', sans-serif;
+    color: #fff;
+    font-size: 72px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 50px;
+  }
+
+  #head{
+    display: block;
+    position: relative;
+  }
+
+  .home button{
+    font-family: 'Rubik', sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+    color: rgb(255, 254, 254);
+    border-radius: 5px;
+    border: none;
+    text-transform: uppercase;
+    background-color: rgb(108, 186, 209);
+    padding: 10px 30px;
+  }
+
+  .home button:hover{
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    color: rgb(15, 15, 15);
+    background-color: #fff;
+    transition: all 0.5s ease-in-out;
+  }
+
+
+
+  /****************SIGN UP FORM START***********************/
+  #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* This creates a semi-transparent black overlay */
+    z-index: 0; /* Make sure the overlay is on top of everything else */
+    display: none; /* Initially hide the overlay */
+  }
+
+  .popup {
+    position: absolute;
+    top: -150%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.25);
+    width: 380px;
+    padding: 25px 35px;
+    background: #ffffff;
+    visibility:hidden;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+    border-radius: 10px;
+    transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms,
+    transform 200ms ease-in-out 200ms;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .popup.active {
+    top: 50%;
+    opacity: 1;
+    visibility:visible;
+    transform: translate(-50%, -50%) scale(1);
+    transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms;
+    transform: 200ms ease-in-out 200ms;
+  }
+
+  .popup .close-btn {
+    position: absolute;
+    top: 10px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+    padding: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    color: #000000;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+
+  .popup .form h2 {
+    text-align: center;
+    color: #50b8e7;
+    margin: 10px 0 20px;
+    font-size: 25px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+  }
+
+  .popup .form .form-element {
+    margin: 15px 0px;
+  }
+
+  .popup .form .form-element label {
+    font-size: 14px;
+    color: #222;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .popup .form .form-element input[type="text"],
+  .popup .form .form-element input[type="password"] {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+  }
+
+  .popup .form .form-element input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .popup .form .form-element button {
+    border: none;
+    outline: none;
+    font-size: 25px;
+    padding: 10px 110px;
+    background-color: skyblue;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Rubik', sans-serif;
+  }
+  .popup .form .form-element a {
+    display: block;
+    text-align: right;
+    font-size: 15px;
+    color: #1a79ca;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  /****************SIGN UP FORM END************************/
+
+  .movin-news{
+    width: 100%;
+    position: relative;
+    z-index: 11;
+  }
+
+  .movin-news marquee{
+    background-color:rgb(255, 250, 242);
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    text-transform: uppercase;
+
+  }
+
+  .lt-move{
+    z-index: 70;
+    transform: skewY(3deg);
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+    
+  }
+
+  .rt-move{
+    position: absolute;
+    z-index: 60;
+    top: 32px;
+    transform: skewY(-2.9deg);
+
+  }
+
+.foot{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.foot-link{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.foot p{
+  color: #fff;
+  padding-left: 10px;
+  font-family:  'Rubik', sans-serif;
+  font-weight: lighter;
+}
+
+.foot-social{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.foot-social p{
+  padding: 0 20px;
+}
+
+.foot a{
+  text-decoration: none;
+  color: #fff;
+  font-family:  'Rubik', sans-serif;
+  font-weight: lighter;
+}
+
+.foot a:hover{
+  color: #fff;
+  text-decoration: none;
+}
+
+.foot-inner-links{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.heading-head{
+  padding: 150px 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.heading-head h2{
+  font-family: 'Rubik', sans-serif;
+  color: #fff;
+  text-transform: capitalize;
+  font-weight: bolder;
+  font-size: 65px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+}
+
+
+.tutorial{
+  height: 100%;
+
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
